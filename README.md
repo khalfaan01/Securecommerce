@@ -3,29 +3,31 @@
 > Security-first e-commerce platform with AI-powered fraud detection, full audit traceability, and real-time threat visibility dashboard.
 
 ## Architecture
+
+```text
 ┌─────────────────────────────────────────────────────────────────┐
-│ FRONTEND (React + Vite) │
-│ ┌──────────────┐ ┌──────────────┐ ┌──────────────────────┐ │
-│ │ Customer Shop │ │ Admin Panel │ │ Security Dashboard │ │
-│ └──────────────┘ └──────────────┘ └──────────────────────┘ │
+│ FRONTEND (React + Vite)                                         │
+│ ┌──────────────┐ ┌──────────────┐ ┌──────────────────────┐      │
+│ │ Customer Shop│ │ Admin Panel  │ │ Security Dashboard   │      │
+│ └──────────────┘ └──────────────┘ └──────────────────────┘      │
 └─────────────────────────────────────────────────────────────────┘
 │ REST API
 ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│ NODE.JS / EXPRESS BACKEND │
-│ ┌──────────────┐ ┌──────────────┐ ┌──────────────────────┐ │
-│ │ Auth (JWT/MFA)│ │ E-Commerce │ │ Security Middleware │ │
-│ └──────────────┘ └──────────────┘ └──────────────────────┘ │
+│ NODE.JS / EXPRESS BACKEND                                       │
+│ ┌──────────────┐ ┌──────────────┐ ┌──────────────────────┐      │
+│ │Auth (JWT/MFA)│ │ E-Commerce   │ │ Security Middleware  │      │
+│ └──────────────┘ └──────────────┘ └──────────────────────┘      │
 └─────────────────────────────────────────────────────────────────┘
 │ Redis Pub/Sub
 ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│ PYTHON FRAUD DETECTION MICROSERVICE │
-│ ┌────────────────────┐ ┌──────────────────────────────────┐ │
-│ │ FastAPI Server │ │ Random Forest ML Model │ │
-│ └────────────────────┘ └──────────────────────────────────┘ │
+│ PYTHON FRAUD DETECTION MICROSERVICE                             │
+│ ┌────────────────────┐ ┌──────────────────────────────────┐     │
+│ │ FastAPI Server     │ │ Random Forest ML Model           │     │
+│ └────────────────────┘ └──────────────────────────────────┘     │
 └─────────────────────────────────────────────────────────────────┘
-
+```
 
 ## Quick Start
 
@@ -65,9 +67,12 @@ cd fraud-service
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 
-Features
+```
 
- Security
+## Features
+
+### Security
+
 JWT authentication with access/refresh token rotation
 MFA via TOTP (Google Authenticator)
 RBAC with three roles: Customer, Admin, Auditor
@@ -75,25 +80,29 @@ Rate limiting & brute force protection
 Input sanitization (NoSQL injection, XSS prevention)
 Secure headers (Helmet, CSP, HSTS)
 
- E-Commerce
+### E-Commerce
+
 Product catalog with categories, search, and filtering
 Shopping cart with session/anonymous support
 Order management with status tracking
 Payment simulation
 
- AI Fraud Detection
+### AI Fraud Detection
+
 Random Forest ML model
 Real-time transaction scoring via Redis pub/sub
 Heuristic fallback when ML service unavailable
 Fraud review queue with approve/reject workflow
 
- Dashboards
+### Dashboards
+
 Security Dashboard: Live audit feed, threat alerts, IP threat map
 Admin Panel: Product/Order/User management
 Analytics: Revenue trends, top products, fraud statistics
 API Endpoints
 
-Authentication
+## Authentication
+
 POST /api/v1/auth/register - Register new user
 POST /api/v1/auth/login - Login
 POST /api/v1/auth/refresh-token - Refresh access token
@@ -116,7 +125,7 @@ GET /api/v1/audit/logs - Audit logs
 GET /api/v1/fraud/alerts - Fraud alerts
 GET /api/v1/analytics/summary - Analytics summary
 
-Security Features
+## Security Features
 
 Feature	        Implementation
 Authentication	JWT + Refresh Token Rotation
