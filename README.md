@@ -107,44 +107,8 @@ uvicorn app.main:app --reload --port 8000
 
 ---
 
-### Authentication
-
-POST /api/v1/auth/register - Register new user  
-POST /api/v1/auth/login - Login  
-POST /api/v1/auth/refresh-token - Refresh access token  
-POST /api/v1/auth/mfa/setup - Setup MFA  
-POST /api/v1/auth/mfa/verify - Verify MFA  
-
----
-
-### Products
-
-GET /api/v1/products - List products  
-POST /api/v1/products - Create product (Admin)  
-PUT /api/v1/products/:id - Update product (Admin)  
-DELETE /api/v1/products/:id - Delete product (Admin)  
-
----
-
-### Orders
-
-POST /api/v1/orders - Create order  
-GET /api/v1/orders/my-orders - Get user orders  
-GET /api/v1/orders/:id - Get order detail  
-
----
-
-### Security (Auditor/Admin)
-
-GET /api/v1/audit/logs - Audit logs  
-GET /api/v1/fraud/alerts - Fraud alerts  
-GET /api/v1/analytics/summary - Analytics summary  
-
----
-
 ## Security Features
 
-```text
 Feature | Implementation
 --------|--------------
 Authentication | JWT + Refresh Token Rotation  
@@ -156,4 +120,3 @@ InputValidation | Zod schemas
 NoSQLInjection | express-mongo-sanitize  
 AuditLogging | Immutable audit collection  
 FraudDetection | Random Forest ML + Heuristics  
-```
